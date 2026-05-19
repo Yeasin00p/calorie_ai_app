@@ -1,0 +1,34 @@
+class OnboardingState {
+  final String gender;
+  final int age;
+  final double weight;
+  final double height;
+  final String activityLevel;
+  final String goal;
+
+  const OnboardingState({
+    this.gender = '',
+    this.age = 0,
+    this.weight = 0.0,
+    this.height = 0.0,
+    this.activityLevel = '',
+    this.goal = '',
+  });
+  OnboardingState copyWith({
+    String? gender,
+    int? age,
+    double? weight,
+    double? height,
+    String? activityLevel,
+    String? goal,
+  }) {
+    return OnboardingState(
+      gender: gender ?? this.gender,
+      age: age ?? this.age,
+      weight: weight ?? this.weight,
+      height: height ?? this.height,
+      activityLevel: activityLevel ?? this.activityLevel,
+      goal: goal ?? this.goal,
+    );
+  }
+}
