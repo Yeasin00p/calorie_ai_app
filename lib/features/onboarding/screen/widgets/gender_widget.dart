@@ -16,7 +16,7 @@ class GenderWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('What is your biological sex', style: AppTypography.headlineLarge),
+        Text('What is your\biological sex', style: AppTypography.headlineLarge),
         const SizedBox(height: 10),
         Text(
           'This helps us calculate your metabolism',

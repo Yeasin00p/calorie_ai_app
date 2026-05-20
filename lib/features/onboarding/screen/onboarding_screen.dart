@@ -1,3 +1,4 @@
+import 'package:calorie_ai_app/features/onboarding/screen/widgets/age_widget.dart';
 import 'package:calorie_ai_app/features/onboarding/screen/widgets/gender_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -6,11 +7,8 @@ class OnboardingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [GenderWidget()],
-      ),
-    );
+    return Scaffold(body: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [ AgeWidget()]));
   }
 }
