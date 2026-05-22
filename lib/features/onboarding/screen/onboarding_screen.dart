@@ -1,5 +1,4 @@
 import 'package:calorie_ai_app/features/onboarding/screen/widgets/age_widget.dart';
-import 'package:calorie_ai_app/features/onboarding/screen/widgets/gender_widget.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingScreen extends StatelessWidget {

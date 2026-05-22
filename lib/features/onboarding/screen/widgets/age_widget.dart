@@ -131,7 +131,7 @@ class _AgeWidgetState extends State<AgeWidget> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("When were you born?", style: AppTypography.headlineLarge),
+        Text("When were you\nborn?", style: AppTypography.headlineLarge),
         const SizedBox(height: 10),
         Text(
           'This will be used to calibrate your custom plan.',
