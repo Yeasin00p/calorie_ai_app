@@ -1,4 +1,4 @@
-import 'package:calorie_ai_app/features/onboarding/screen/widgets/age_widget.dart';
+import 'package:calorie_ai_app/features/onboarding/screen/widgets/height_weight_widget.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingScreen extends StatelessWidget {
@@ -8,6 +8,6 @@ class OnboardingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(body: Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [ AgeWidget()]));
+      children: [ HeightWeightWidget()]));
   }
 }

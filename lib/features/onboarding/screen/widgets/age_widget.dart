@@ -1,3 +1,4 @@
+import 'package:calorie_ai_app/features/onboarding/screen/widgets/picker_column.dart';
 import 'package:calorie_ai_app/theme/app_typography.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -164,7 +165,7 @@ class _AgeWidgetState extends State<AgeWidget> {
                 children: [
                   Expanded(
                     flex: 5,
-                    child: _PickerColumn(
+                    child: PickerColumn(
                       controller: _monthController,
                       items: _months,
                       selectedIndex: _selectedMonth,
@@ -180,7 +181,7 @@ class _AgeWidgetState extends State<AgeWidget> {
 
                   Expanded(
                     flex: 3,
-                    child: _PickerColumn(
+                    child: PickerColumn(
                       controller: _dayController,
                       items: days.map((e) => e.toString()).toList(),
                       selectedIndex: _selectedDay,
@@ -196,7 +197,7 @@ class _AgeWidgetState extends State<AgeWidget> {
 
                   Expanded(
                     flex: 4,
-                    child: _PickerColumn(
+                    child: PickerColumn(
                       controller: _yearController,
                       items: _years.map((e) => e.toString()).toList(),
                       selectedIndex: _selectedYearIndex,
@@ -254,48 +255,3 @@ class _AgeWidgetState extends State<AgeWidget> {
   }
 }
 
-class _PickerColumn extends StatelessWidget {
-  final FixedExtentScrollController controller;
-  final List<String> items;
-  final int selectedIndex;
-  final ValueChanged<int> onChanged;
-
-  const _PickerColumn({
-    required this.controller,
-    required this.items,
-    required this.selectedIndex,
-    required this.onChanged,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ListWheelScrollView.useDelegate(
-      controller: controller,
-      itemExtent: _kItemExtent,
-      physics: const FixedExtentScrollPhysics(),
-      perspective: 0.002,
-      diameterRatio: 1.3,
-      onSelectedItemChanged: onChanged,
-      childDelegate: ListWheelChildBuilderDelegate(
-        childCount: items.length,
-        builder: (context, index) {
-          final isSelected = index == selectedIndex;
-
-          return Center(
-            child: AnimatedDefaultTextStyle(
-              duration: const Duration(milliseconds: 180),
-              style: TextStyle(
-                fontSize: isSelected ? 17 : 14,
-                fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
-                color: isSelected
-                    ? Colors.black
-                    : Colors.grey.withValues(alpha: 0.3),
-              ),
-              child: Text(items[index]),
-            ),
-          );
-        },
-      ),
-    );
-  }
-}
