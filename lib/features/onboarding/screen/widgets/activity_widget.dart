@@ -5,21 +5,21 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../theme/app_typography.dart';
 import '../../cubit/onboarding_state.dart';
 
+const _activityLevels = [
+  (label: 'Sedentary', description: 'Little or no exercise'),
+  (label: 'Light', description: 'Exercise 1-3 days/week'),
+  (label: 'Moderate', description: 'Exercise 3-5 days/week'),
+  (label: 'Active', description: 'Exercise 6-7 days/week'),
+  (label: 'Very Active', description: 'Hard exercise daily'),
+];
+
 class ActivityWidget extends StatelessWidget {
   const ActivityWidget({super.key});
-  static const List<Map<String, String>> _activityLevels = [
-    {'label': 'Sedentary', 'description': 'Little or no exercise'},
-    {'label': 'Light', 'description': 'Exercise 1-3 days/week'},
-    {'label': 'Moderate', 'description': 'Exercise 3-5 days/week'},
-    {'label': 'Active', 'description': 'Exercise 6-7 days/week'},
-    {'label': 'Very Active', 'description': 'Hard exercise daily'},
-  ];
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       physics: const ClampingScrollPhysics(),
-      padding: const EdgeInsets.all(24),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -34,19 +34,17 @@ class ActivityWidget extends StatelessWidget {
             builder: (context, state) {
               return Column(
                 children: _activityLevels.map((activity) {
-                  final label = activity['label']!;
-                  final description = activity['description']!;
-                  final isSelected = state.activityLevel == label;
+                  final isSelected = state.activityLevel == activity.label;
 
                   return Padding(
-                    padding: const EdgeInsets.only(bottom: 12),
+                    padding: const EdgeInsets.only(bottom: 16),
                     child: _ActivityCard(
-                      label: label,
-                      description: description,
+                      label: activity.label,
+                      description: activity.description,
                       isSelected: isSelected,
                       onTap: () {
                         context.read<OnboardingCubit>().updateActivityLevel(
-                          label,
+                          activity.label,
                         );
                       },
                     ),
