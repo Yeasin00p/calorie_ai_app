@@ -1,5 +1,4 @@
-import 'package:calorie_ai_app/features/onboarding/screen/widgets/activity_widget.dart';
-import 'package:calorie_ai_app/features/onboarding/screen/widgets/height_weight_widget.dart';
+import 'package:calorie_ai_app/features/onboarding/screen/widgets/health_goal_widget.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingScreen extends StatelessWidget {
@@ -7,8 +6,13 @@ class OnboardingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [ ActivityWidget()]));
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.all(24),
+        child: SafeArea(
+          child: Column(children: [Expanded(child: HealthGoalWidget())]),
+        ),
+      ),
+    );
   }
 }
