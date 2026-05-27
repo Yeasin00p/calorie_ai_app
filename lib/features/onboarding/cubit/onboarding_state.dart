@@ -5,6 +5,10 @@ class OnboardingState {
   final double height;
   final String activityLevel;
   final String goal;
+  final int estimatedCalories;
+  final double proteinGoal;
+  final double fatGoal;
+  final double carbsGoal;
 
   const OnboardingState({
     this.gender = '',
@@ -13,6 +17,10 @@ class OnboardingState {
     this.height = 0.0,
     this.activityLevel = '',
     this.goal = '',
+    this.estimatedCalories = 0,
+    this.proteinGoal = 0,
+    this.fatGoal = 0,
+    this.carbsGoal = 0,
   });
   OnboardingState copyWith({
     String? gender,
@@ -21,6 +29,10 @@ class OnboardingState {
     double? height,
     String? activityLevel,
     String? goal,
+    int? estimatedCalories,
+    double? proteinGoal,
+    double? fatGoal,
+    double? carbsGoal,
   }) {
     return OnboardingState(
       gender: gender ?? this.gender,
@@ -29,6 +41,10 @@ class OnboardingState {
       height: height ?? this.height,
       activityLevel: activityLevel ?? this.activityLevel,
       goal: goal ?? this.goal,
+      estimatedCalories: estimatedCalories ?? this.estimatedCalories,
+      proteinGoal: proteinGoal ?? this.proteinGoal,
+      fatGoal: fatGoal ?? this.fatGoal,
+      carbsGoal: carbsGoal ?? this.carbsGoal,
     );
   }
 }
