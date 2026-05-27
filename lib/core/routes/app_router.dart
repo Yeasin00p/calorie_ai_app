@@ -4,8 +4,12 @@ import 'package:calorie_ai_app/features/onboarding/cubit/onboarding_cubit.dart';
 import 'package:calorie_ai_app/features/onboarding/screen/onboarding_screen.dart';
 import 'package:calorie_ai_app/features/setting/setting_screen.dart';
 import 'package:calorie_ai_app/features/splash/splash_screen.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../features/onboarding/data/local/preference_manager.dart';
 
 class AppRouter {
   AppRouter._();
@@ -23,9 +27,21 @@ class AppRouter {
       GoRoute(
         path: AppRoutes.onboarding,
         builder: (context, state) {
-          return BlocProvider(
-            create: (_) => OnboardingCubit(),
-            child: const OnboardingScreen(),
+          return FutureBuilder(
+            future: SharedPreferences.getInstance(),
+            builder: (context, snapshot) {
+              if (!snapshot.hasData) {
+                return const SplashScreen(); // or loading widget
+              }
+
+              final prefs = snapshot.data!;
+              final prefManager = PreferenceManager(prefs);
+
+              return BlocProvider(
+                create: (_) => OnboardingCubit(prefManager),
+                child: const OnboardingScreen(),
+              );
+            },
           );
         },
       ),

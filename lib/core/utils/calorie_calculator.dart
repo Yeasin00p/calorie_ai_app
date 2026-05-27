@@ -47,31 +47,16 @@ class CalorieCalculator {
     required int calories,
     required String goal,
   }) {
-    double proteinPercent;
-    double fatPercent;
-    double carbsPercent;
-
-    switch (goal) {
-      case 'Weight Loss':
-        proteinPercent = 0.30;
-        fatPercent = 0.25;
-        carbsPercent = 0.45;
-        break;
-      case 'Muscle Gain':
-        proteinPercent = 0.25;
-        fatPercent = 0.25;
-        carbsPercent = 0.50;
-        break;
-      default:
-        proteinPercent = 0.25;
-        fatPercent = 0.25;
-        carbsPercent = 0.50;
-    }
+    final (proteinPercent, fatPercent, carbsPercent) = switch (goal) {
+      'Weight Loss' => (0.30, 0.25, 0.45),
+      'Muscle Gain' => (0.25, 0.25, 0.50),
+      _ => (0.25, 0.25, 0.50),
+    };
 
     return {
-      'proteinGoal': (calories * proteinPercent / 4).round(),
-      'fatGoal': (calories * fatPercent / 9).round(),
-      'carbsGoal': (calories * carbsPercent / 4).round(),
+      'protein': (calories * proteinPercent / 4).round(),
+      'fat': (calories * fatPercent / 9).round(),
+      'carbs': (calories * carbsPercent / 4).round(),
     };
   }
 

@@ -5,9 +5,16 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class PreferenceManager {
   static const String _userDataKey = 'userData';
+  static const _onboardingKey = 'onboarding_complete';
 
   final SharedPreferences preferences;
   PreferenceManager(this.preferences);
+
+  Future<void> setOnboardingComplete() async {
+    await preferences.setBool(_onboardingKey, true);
+  }
+
+  bool get isOnboardingComplete => preferences.getBool(_onboardingKey) ?? false;
 
   Future<void> saveUserData(UserData data) async {
     final userDataJson = jsonEncode(data.toJson());
