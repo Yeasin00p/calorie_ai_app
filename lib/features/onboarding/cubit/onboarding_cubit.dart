@@ -24,12 +24,12 @@ class OnboardingCubit extends Cubit<OnboardingState> {
   void updateGoal(String value) => emit(state.copyWith(goal: value));
 
   Future<void> saveAndCalculate() async {
-    final heightInCm = state.height!;
+    final heightInCm = state.height;
 
     final maintenanceCalories = CalorieCalculator.fallbackEstimateCalories(
-      weight: state.weight!,
+      weight: state.weight,
       height: heightInCm,
-      age: state.age!,
+      age: state.age,
       activityLevel: state.activityLevel,
       gender: state.gender,
     );
@@ -54,9 +54,9 @@ class OnboardingCubit extends Cubit<OnboardingState> {
     );
 
     final userData = UserData(
-      weight: state.weight!,
+      weight: state.weight,
       height: heightInCm,
-      age: state.age!,
+      age: state.age,
       activityLevel: state.activityLevel,
       gender: state.gender,
       goal: state.goal,
