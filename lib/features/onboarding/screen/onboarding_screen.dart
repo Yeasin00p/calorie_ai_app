@@ -82,6 +82,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final bool isLastPage = _currentPage == _kTotalPages - 1;
     return Scaffold(
       appBar: AppBar(
         leading: _currentPage == 0
@@ -116,7 +117,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         child: Padding(
           padding: const EdgeInsets.all(20),
           child: AppButton(
-            text: _currentPage == _kTotalPages - 1 ? 'Get Started' : 'Continue',
+            text: isLastPage ? 'Get Started' : 'Next',
             onTap: _nextPage,
           ),
         ),
