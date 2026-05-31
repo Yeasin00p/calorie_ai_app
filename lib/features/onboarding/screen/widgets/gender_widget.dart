@@ -16,37 +16,43 @@ class GenderWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('What is your\biological sex', style: AppTypography.headlineLarge),
+        Text('What is your biological sex', style: AppTypography.headlineLarge),
         const SizedBox(height: 10),
         Text(
           'This helps us calculate your metabolism',
           style: AppTypography.bodyMedium,
         ),
-        const SizedBox(height: 20),
-        BlocBuilder<OnboardingCubit, OnboardingState>(
-          builder: (context, state) {
-            return Column(
-              children: [
-                _GenderCard(
-                  label: _kMale,
-                  icon: Icons.male,
-                  isSelected: state.gender == _kMale,
-                  onTap: () {
-                    context.read<OnboardingCubit>().updateGender(_kMale);
-                  },
-                ),
-                const SizedBox(height: 12),
-                _GenderCard(
-                  label: _kFemale,
-                  icon: Icons.female,
-                  isSelected: state.gender == _kFemale,
-                  onTap: () {
-                    context.read<OnboardingCubit>().updateGender(_kFemale);
-                  },
-                ),
-              ],
-            );
-          },
+        const SizedBox(height: 32),
+        Expanded(
+          child: Center(
+            child: BlocBuilder<OnboardingCubit, OnboardingState>(
+              builder: (context, state) {
+                return Column(
+                  mainAxisSize: MainAxisSize.min,
+
+                  children: [
+                    _GenderCard(
+                      label: _kMale,
+                      icon: Icons.male,
+                      isSelected: state.gender == _kMale,
+                      onTap: () {
+                        context.read<OnboardingCubit>().updateGender(_kMale);
+                      },
+                    ),
+                    const SizedBox(height: 12),
+                    _GenderCard(
+                      label: _kFemale,
+                      icon: Icons.female,
+                      isSelected: state.gender == _kFemale,
+                      onTap: () {
+                        context.read<OnboardingCubit>().updateGender(_kFemale);
+                      },
+                    ),
+                  ],
+                );
+              },
+            ),
+          ),
         ),
       ],
     );
