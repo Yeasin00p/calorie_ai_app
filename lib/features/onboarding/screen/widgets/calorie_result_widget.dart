@@ -45,9 +45,98 @@ class CalorieResultWidget extends StatelessWidget {
                 ),
               ),
             ),
+            const SizedBox(height: 36),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 4),
+              width: double.infinity,
+              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 8),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(20),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withValues(alpha: 0.06),
+                    blurRadius: 12,
+                    offset: const Offset(0, 2),
+                  ),
+                ],
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  _MacroItem(
+                    value: '${state.proteinGoal.toInt()}g',
+                    label: 'Protein',
+                    color: const Color(0xFF5B8DEF),
+                  ),
+                  _VerticalDivider(),
+                  _MacroItem(
+                    value: '${state.carbsGoal.toInt()}g',
+                    label: 'Carbs',
+                    color: const Color(0xFFF5A623),
+                  ),
+                  _VerticalDivider(),
+                  _MacroItem(
+                    value: '${state.fatGoal.toInt()}g',
+                    label: 'Fat',
+                    color: const Color(0xFFF5654A),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 32),
+            Align(
+              alignment: Alignment.center,
+              child: Text(
+                "You're all set! Start scanning your meals\nand we'll help you stay on track.",
+                textAlign: TextAlign.center,
+                style: AppTypography.bodyLarge.copyWith(
+                  color: AppColors.black.withValues(alpha: .6),
+                ),
+              ),
+            ),
           ],
         );
       },
     );
+  }
+}
+
+class _MacroItem extends StatelessWidget {
+  final String value;
+  final String label;
+  final Color color;
+
+  const _MacroItem({
+    required this.value,
+    required this.label,
+    required this.color,
+  });
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text(
+          value,
+          style: AppTypography.labelSmall.copyWith(color: color, fontSize: 22),
+        ),
+        const SizedBox(height: 10),
+        Text(
+          label,
+          style: TextStyle(
+            fontSize: 13,
+            fontWeight: FontWeight.w600,
+            color: Colors.grey,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _VerticalDivider extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(width: 1, height: 40, color: const Color(0xFFE8E8E8));
   }
 }
