@@ -9,14 +9,14 @@ class FoodItem {
   final DateTime timestamp;
   final String? imageUrl;
 
-  const FoodItem({
+  FoodItem({
     required this.id,
     required this.name,
     required this.calories,
     required this.protein,
     required this.carbs,
     required this.fat,
-    this.quantity = 100,
+    required this.quantity,
     required this.timestamp,
     this.imageUrl,
   });
@@ -29,7 +29,7 @@ class FoodItem {
       protein: (json['protein'] as num).toDouble(),
       carbs: (json['carbs'] as num).toDouble(),
       fat: (json['fat'] as num).toDouble(),
-      quantity: (json['quantity'] as num?)?.toDouble() ?? 100,
+      quantity: (json['quantity'] as num).toDouble(),
       timestamp: DateTime.parse(json['timestamp'] as String),
       imageUrl: json['imageUrl'] as String?,
     );
@@ -50,26 +50,31 @@ class FoodItem {
   }
 
   FoodItem copyWith({
-    String? id,
     String? name,
     double? calories,
     double? protein,
     double? carbs,
     double? fat,
     double? quantity,
-    DateTime? timestamp,
     String? imageUrl,
   }) {
     return FoodItem(
-      id: id ?? this.id,
+      id: id,
+      timestamp: timestamp,
       name: name ?? this.name,
       calories: calories ?? this.calories,
       protein: protein ?? this.protein,
       carbs: carbs ?? this.carbs,
       fat: fat ?? this.fat,
       quantity: quantity ?? this.quantity,
-      timestamp: timestamp ?? this.timestamp,
       imageUrl: imageUrl ?? this.imageUrl,
     );
+  }
+
+  @override
+  String toString() {
+    return 'FoodItem(id: $id, name: $name, calories: $calories, '
+        'protein: $protein, carbs: $carbs, fat: $fat, '
+        'quantity: $quantity, timestamp: $timestamp)';
   }
 }
