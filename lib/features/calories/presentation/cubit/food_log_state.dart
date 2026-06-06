@@ -1,4 +1,4 @@
-import '../../data/model/food_item.dart';
+import '../../data/models/food_item.dart';
 
 class FoodLogState {
   static const _undefined = Object();

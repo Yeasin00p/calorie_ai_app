@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../model/food_item.dart';
+import '../models/food_item.dart';
 
 class FoodRepository {
   final SharedPreferences _prefs;

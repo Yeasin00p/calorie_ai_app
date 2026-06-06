@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../data/model/food_item.dart';
+import '../../data/models/food_item.dart';
 import '../../data/repositories/food_repository.dart';
 import 'food_log_state.dart';
 
